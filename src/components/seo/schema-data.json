@@ -1,0 +1,25 @@
+{
+  "collectionName": "components_seo_schema_data",
+  "info": {
+    "displayName": "SchemaData",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "schemaType": {
+      "type": "enumeration",
+      "enum": [
+        "person",
+        "website ",
+        "organization",
+        "article"
+      ]
+    },
+    "schema": {
+      "type": "json"
+    },
+    "title": {
+      "type": "string"
+    }
+  }
+}

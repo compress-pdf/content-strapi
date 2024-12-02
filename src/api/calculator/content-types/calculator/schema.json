@@ -1,0 +1,72 @@
+{
+  "kind": "collectionType",
+  "collectionName": "calculators",
+  "info": {
+    "singularName": "calculator",
+    "pluralName": "calculators",
+    "displayName": "Calculator",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "title",
+      "required": true
+    },
+    "HeroTitle": {
+      "type": "string"
+    },
+    "calculator": {
+      "type": "dynamiczone",
+      "components": [
+        "calculator.result",
+        "calculator.length-conversion"
+      ]
+    },
+    "seo": {
+      "type": "dynamiczone",
+      "components": [
+        "seo.meta-data",
+        "seo.breadcrumb",
+        "seo.schema"
+      ]
+    },
+    "node_2_": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::node2.node2",
+      "inversedBy": "calculators"
+    },
+    "node_3_": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::node3.node3",
+      "inversedBy": "calculators"
+    },
+    "thumbnail": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files"
+      ]
+    },
+    "content": {
+      "type": "dynamiczone",
+      "components": [
+        "shared.rich-text",
+        "shared.media",
+        "shared.ads"
+      ]
+    }
+  }
+}

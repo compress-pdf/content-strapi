@@ -1,0 +1,21 @@
+{
+  "kind": "collectionType",
+  "collectionName": "ad_scripts",
+  "info": {
+    "singularName": "ad-script",
+    "pluralName": "ad-scripts",
+    "displayName": "AdScript"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "adsScript": {
+      "type": "richtext"
+    }
+  }
+}

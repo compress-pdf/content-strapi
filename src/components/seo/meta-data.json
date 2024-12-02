@@ -1,0 +1,26 @@
+{
+  "collectionName": "components_seo_meta_data",
+  "info": {
+    "displayName": "MetaData",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "text",
+      "required": true
+    },
+    "imageUrl": {
+      "type": "text",
+      "required": true
+    },
+    "imageAlt": {
+      "type": "string",
+      "required": true
+    }
+  }
+}

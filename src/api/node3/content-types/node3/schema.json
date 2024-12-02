@@ -1,0 +1,36 @@
+{
+  "kind": "collectionType",
+  "collectionName": "node3s",
+  "info": {
+    "singularName": "node3",
+    "pluralName": "node3s",
+    "displayName": "Node3"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "title",
+      "required": true
+    },
+    "node_2": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::node2.node2",
+      "inversedBy": "node_3_s"
+    },
+    "calculators": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::calculator.calculator",
+      "mappedBy": "node_3_"
+    }
+  }
+}

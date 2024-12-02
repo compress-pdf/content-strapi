@@ -1,0 +1,31 @@
+{
+  "kind": "collectionType",
+  "collectionName": "node1s",
+  "info": {
+    "singularName": "node1",
+    "pluralName": "node1s",
+    "displayName": "Node1",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "title",
+      "required": true
+    },
+    "node_2s": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::node2.node2",
+      "mappedBy": "node_1"
+    }
+  }
+}

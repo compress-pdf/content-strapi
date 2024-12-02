@@ -1,0 +1,17 @@
+{
+  "collectionName": "components_shared_text_editors",
+  "info": {
+    "displayName": "Text Editor"
+  },
+  "options": {},
+  "attributes": {
+    "content": {
+      "type": "customField",
+      "options": {
+        "output": "HTML",
+        "preset": "rich"
+      },
+      "customField": "plugin::ckeditor.CKEditor"
+    }
+  }
+}

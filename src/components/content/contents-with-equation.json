@@ -1,0 +1,12 @@
+{
+  "collectionName": "components_content_contents_with_equations",
+  "info": {
+    "displayName": "Contents with equation"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    }
+  }
+}

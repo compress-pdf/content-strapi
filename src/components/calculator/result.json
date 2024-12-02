@@ -1,0 +1,13 @@
+{
+  "collectionName": "components_calculator_results",
+  "info": {
+    "displayName": "Result",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "content": {
+      "type": "richtext"
+    }
+  }
+}

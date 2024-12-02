@@ -1,0 +1,15 @@
+{
+  "collectionName": "components_seo_schemata",
+  "info": {
+    "displayName": "Schema",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "content": {
+      "type": "component",
+      "repeatable": true,
+      "component": "seo.schema-data"
+    }
+  }
+}
