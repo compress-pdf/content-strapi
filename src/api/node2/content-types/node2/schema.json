@@ -32,12 +32,6 @@
       "relation": "oneToMany",
       "target": "api::node3.node3",
       "mappedBy": "node_2"
-    },
-    "calculators": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::calculator.calculator",
-      "mappedBy": "node_2_"
     }
   }
 }

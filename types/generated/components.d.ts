@@ -1,19 +1,72 @@
 import type { Schema, Struct } from '@strapi/strapi';
 
-export interface CalculatorLengthConversion extends Struct.ComponentSchema {
-  collectionName: 'components_calculator_length_conversions';
+export interface CalculatorAreaCalculatorComponent
+  extends Struct.ComponentSchema {
+  collectionName: 'components_calculator_area_calculator_components';
   info: {
-    description: '';
-    displayName: 'Length Conversion';
+    displayName: 'AreaCalculatorComponent';
   };
   attributes: {
-    conversionParameter: Schema.Attribute.Decimal;
-    From: Schema.Attribute.Enumeration<
-      ['centimeter', 'meter', 'kilometer', 'decimeter', 'millimeter']
+    conversionParameter: Schema.Attribute.Float;
+    from: Schema.Attribute.Enumeration<
+      ['square feet', 'square inch', 'square meter']
+    > &
+      Schema.Attribute.Required;
+    slug: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.Unique;
+    title: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.Unique;
+    to: Schema.Attribute.Enumeration<
+      ['square feet', 'square inch', 'square meter']
     >;
-    To: Schema.Attribute.Enumeration<
-      ['centimeter', 'meter', 'kilometer', 'decimeter', 'millimeter']
-    >;
+  };
+}
+
+export interface CalculatorLengthCalculatorComponent
+  extends Struct.ComponentSchema {
+  collectionName: 'components_calculator_length_calculator_components';
+  info: {
+    description: '';
+    displayName: 'LengthCalculatorComponent';
+  };
+  attributes: {
+    conversionParameter: Schema.Attribute.Float;
+    from: Schema.Attribute.Enumeration<
+      [
+        'meter',
+        'kilometer',
+        'nanometer',
+        'centimeter',
+        'micrometer',
+        'decimeter',
+        'millimeter',
+        'picometer',
+        'yard',
+      ]
+    > &
+      Schema.Attribute.Required;
+    slug: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.Unique;
+    title: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.Unique;
+    to: Schema.Attribute.Enumeration<
+      [
+        'meter',
+        'kilometer',
+        'nanometer',
+        'centimeter',
+        'micrometer',
+        'decimeter',
+        'millimeter',
+        'picometer',
+        'yard',
+      ]
+    > &
+      Schema.Attribute.Required;
   };
 }
 
@@ -28,34 +81,12 @@ export interface CalculatorResult extends Struct.ComponentSchema {
   };
 }
 
-export interface ContentContentSections extends Struct.ComponentSchema {
-  collectionName: 'components_content_content_sections';
-  info: {
-    displayName: 'content sections';
-  };
-  attributes: {
-    title: Schema.Attribute.String;
-  };
-}
-
-export interface ContentContentsWithEquation extends Struct.ComponentSchema {
-  collectionName: 'components_content_contents_with_equations';
-  info: {
-    displayName: 'Contents with equation';
-  };
-  attributes: {
-    title: Schema.Attribute.String;
-  };
-}
-
 export interface SeoBreadcrumb extends Struct.ComponentSchema {
   collectionName: 'components_seo_breadcrumbs';
   info: {
     displayName: 'Breadcrumb';
   };
-  attributes: {
-    item: Schema.Attribute.Component<'shared.link', true>;
-  };
+  attributes: {};
 }
 
 export interface SeoMetaData extends Struct.ComponentSchema {
@@ -98,32 +129,6 @@ export interface SeoSchemaData extends Struct.ComponentSchema {
   };
 }
 
-export interface SharedAds extends Struct.ComponentSchema {
-  collectionName: 'components_shared_ads';
-  info: {
-    description: '';
-    displayName: 'Ads';
-  };
-  attributes: {
-    ad_script: Schema.Attribute.Relation<
-      'oneToOne',
-      'api::ad-script.ad-script'
-    >;
-    title: Schema.Attribute.String;
-  };
-}
-
-export interface SharedLink extends Struct.ComponentSchema {
-  collectionName: 'components_shared_links';
-  info: {
-    displayName: 'Link';
-  };
-  attributes: {
-    title: Schema.Attribute.String & Schema.Attribute.Required;
-    url: Schema.Attribute.String & Schema.Attribute.Required;
-  };
-}
-
 export interface SharedMedia extends Struct.ComponentSchema {
   collectionName: 'components_shared_media';
   info: {
@@ -137,40 +142,16 @@ export interface SharedMedia extends Struct.ComponentSchema {
   };
 }
 
-export interface SharedQuote extends Struct.ComponentSchema {
-  collectionName: 'components_shared_quotes';
-  info: {
-    displayName: 'Quote';
-    icon: 'indent';
-  };
-  attributes: {
-    body: Schema.Attribute.Text;
-    title: Schema.Attribute.String;
-  };
-}
-
 export interface SharedRichText extends Struct.ComponentSchema {
   collectionName: 'components_shared_rich_texts';
   info: {
     description: '';
-    displayName: 'Rich text';
+    displayName: 'Markdown Editor';
     icon: 'align-justify';
   };
   attributes: {
     body: Schema.Attribute.RichText;
     title: Schema.Attribute.String;
-  };
-}
-
-export interface SharedSlider extends Struct.ComponentSchema {
-  collectionName: 'components_shared_sliders';
-  info: {
-    description: '';
-    displayName: 'Slider';
-    icon: 'address-book';
-  };
-  attributes: {
-    files: Schema.Attribute.Media<'images', true>;
   };
 }
 
@@ -194,20 +175,15 @@ export interface SharedTextEditor extends Struct.ComponentSchema {
 declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
-      'calculator.length-conversion': CalculatorLengthConversion;
+      'calculator.area-calculator-component': CalculatorAreaCalculatorComponent;
+      'calculator.length-calculator-component': CalculatorLengthCalculatorComponent;
       'calculator.result': CalculatorResult;
-      'content.content-sections': ContentContentSections;
-      'content.contents-with-equation': ContentContentsWithEquation;
       'seo.breadcrumb': SeoBreadcrumb;
       'seo.meta-data': SeoMetaData;
       'seo.schema': SeoSchema;
       'seo.schema-data': SeoSchemaData;
-      'shared.ads': SharedAds;
-      'shared.link': SharedLink;
       'shared.media': SharedMedia;
-      'shared.quote': SharedQuote;
       'shared.rich-text': SharedRichText;
-      'shared.slider': SharedSlider;
       'shared.text-editor': SharedTextEditor;
     }
   }

@@ -4,11 +4,5 @@
     "displayName": "Breadcrumb"
   },
   "options": {},
-  "attributes": {
-    "item": {
-      "type": "component",
-      "repeatable": true,
-      "component": "shared.link"
-    }
-  }
+  "attributes": {}
 }

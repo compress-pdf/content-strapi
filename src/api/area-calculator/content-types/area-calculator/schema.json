@@ -1,0 +1,21 @@
+{
+  "kind": "singleType",
+  "collectionName": "area_calculators",
+  "info": {
+    "singularName": "area-calculator",
+    "pluralName": "area-calculators",
+    "displayName": "AreaCalculators",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "calculator": {
+      "type": "component",
+      "repeatable": true,
+      "component": "calculator.area-calculator-component"
+    }
+  }
+}

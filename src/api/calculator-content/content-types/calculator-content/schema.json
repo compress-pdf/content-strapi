@@ -1,0 +1,47 @@
+{
+  "kind": "collectionType",
+  "collectionName": "calculator_contents",
+  "info": {
+    "singularName": "calculator-content",
+    "pluralName": "calculator-contents",
+    "displayName": "CalculatorContent",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "node_3": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::node3.node3",
+      "inversedBy": "calculator_content"
+    },
+    "seo": {
+      "type": "dynamiczone",
+      "components": [
+        "seo.schema",
+        "seo.meta-data",
+        "seo.breadcrumb"
+      ]
+    },
+    "content": {
+      "type": "dynamiczone",
+      "components": [
+        "shared.text-editor",
+        "shared.rich-text",
+        "shared.media"
+      ]
+    },
+    "calculator": {
+      "type": "dynamiczone",
+      "components": [
+        "calculator.result"
+      ]
+    }
+  }
+}

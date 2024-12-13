@@ -369,171 +369,142 @@ export interface AdminUser extends Struct.CollectionTypeSchema {
   };
 }
 
-export interface ApiAboutAbout extends Struct.SingleTypeSchema {
-  collectionName: 'abouts';
-  info: {
-    description: 'Write about yourself and the content you create';
-    displayName: 'About';
-    pluralName: 'abouts';
-    singularName: 'about';
-  };
-  options: {
-    draftAndPublish: false;
-  };
-  attributes: {
-    blocks: Schema.Attribute.DynamicZone<
-      ['shared.media', 'shared.quote', 'shared.rich-text', 'shared.slider']
-    >;
-    createdAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    description: Schema.Attribute.RichText &
-      Schema.Attribute.CustomField<
-        'plugin::ckeditor.CKEditor',
-        {
-          output: 'HTML';
-          preset: 'rich';
-        }
-      >;
-    locale: Schema.Attribute.String & Schema.Attribute.Private;
-    localizations: Schema.Attribute.Relation<'oneToMany', 'api::about.about'> &
-      Schema.Attribute.Private;
-    publishedAt: Schema.Attribute.DateTime;
-    title: Schema.Attribute.String;
-    updatedAt: Schema.Attribute.DateTime;
-    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-  };
-}
-
-export interface ApiAdScriptAdScript extends Struct.CollectionTypeSchema {
-  collectionName: 'ad_scripts';
-  info: {
-    displayName: 'AdScript';
-    pluralName: 'ad-scripts';
-    singularName: 'ad-script';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    adsScript: Schema.Attribute.RichText;
-    createdAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    locale: Schema.Attribute.String & Schema.Attribute.Private;
-    localizations: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::ad-script.ad-script'
-    > &
-      Schema.Attribute.Private;
-    publishedAt: Schema.Attribute.DateTime;
-    title: Schema.Attribute.String;
-    updatedAt: Schema.Attribute.DateTime;
-    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-  };
-}
-
-export interface ApiAuthorAuthor extends Struct.CollectionTypeSchema {
-  collectionName: 'authors';
-  info: {
-    description: 'Create authors for your content';
-    displayName: 'Author';
-    pluralName: 'authors';
-    singularName: 'author';
-  };
-  options: {
-    draftAndPublish: false;
-  };
-  attributes: {
-    avatar: Schema.Attribute.Media<'images' | 'files' | 'videos'>;
-    createdAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    email: Schema.Attribute.String;
-    locale: Schema.Attribute.String & Schema.Attribute.Private;
-    localizations: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::author.author'
-    > &
-      Schema.Attribute.Private;
-    name: Schema.Attribute.String;
-    publishedAt: Schema.Attribute.DateTime;
-    updatedAt: Schema.Attribute.DateTime;
-    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-  };
-}
-
-export interface ApiCalculatorCalculator extends Struct.CollectionTypeSchema {
-  collectionName: 'calculators';
+export interface ApiAreaCalculatorAreaCalculator
+  extends Struct.SingleTypeSchema {
+  collectionName: 'area_calculators';
   info: {
     description: '';
-    displayName: 'Calculator';
-    pluralName: 'calculators';
-    singularName: 'calculator';
+    displayName: 'AreaCalculators';
+    pluralName: 'area-calculators';
+    singularName: 'area-calculator';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
-    calculator: Schema.Attribute.DynamicZone<
-      ['calculator.result', 'calculator.length-conversion']
-    >;
-    content: Schema.Attribute.DynamicZone<
-      ['shared.rich-text', 'shared.media', 'shared.ads']
+    calculator: Schema.Attribute.Component<
+      'calculator.area-calculator-component',
+      true
     >;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    HeroTitle: Schema.Attribute.String;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
-      'api::calculator.calculator'
+      'api::area-calculator.area-calculator'
     > &
       Schema.Attribute.Private;
-    node_2_: Schema.Attribute.Relation<'manyToOne', 'api::node2.node2'>;
-    node_3_: Schema.Attribute.Relation<'manyToOne', 'api::node3.node3'>;
     publishedAt: Schema.Attribute.DateTime;
-    seo: Schema.Attribute.DynamicZone<
-      ['seo.meta-data', 'seo.breadcrumb', 'seo.schema']
-    >;
-    slug: Schema.Attribute.UID<'title'> & Schema.Attribute.Required;
-    thumbnail: Schema.Attribute.Media<'images' | 'files'>;
-    title: Schema.Attribute.String & Schema.Attribute.Required;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
   };
 }
 
-export interface ApiGlobalGlobal extends Struct.SingleTypeSchema {
-  collectionName: 'globals';
+export interface ApiCalculatorContentCalculatorContent
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'calculator_contents';
   info: {
-    description: 'Define global settings';
-    displayName: 'Global';
-    pluralName: 'globals';
-    singularName: 'global';
+    description: '';
+    displayName: 'CalculatorContent';
+    pluralName: 'calculator-contents';
+    singularName: 'calculator-content';
   };
   options: {
-    draftAndPublish: false;
+    draftAndPublish: true;
   };
   attributes: {
+    calculator: Schema.Attribute.DynamicZone<['calculator.result']>;
+    content: Schema.Attribute.DynamicZone<
+      ['shared.text-editor', 'shared.rich-text', 'shared.media']
+    >;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    favicon: Schema.Attribute.Media<'images' | 'files' | 'videos'>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
-      'api::global.global'
+      'api::calculator-content.calculator-content'
+    > &
+      Schema.Attribute.Private;
+    node_3: Schema.Attribute.Relation<'oneToOne', 'api::node3.node3'>;
+    publishedAt: Schema.Attribute.DateTime;
+    seo: Schema.Attribute.DynamicZone<
+      ['seo.schema', 'seo.meta-data', 'seo.breadcrumb']
+    >;
+    title: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiChildCalculatorContentChildCalculatorContent
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'child_calculator_contents';
+  info: {
+    description: '';
+    displayName: 'ChildCalculatorContent';
+    pluralName: 'child-calculator-contents';
+    singularName: 'child-calculator-content';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    calculator: Schema.Attribute.DynamicZone<['calculator.result']>;
+    content: Schema.Attribute.DynamicZone<
+      ['shared.text-editor', 'shared.rich-text', 'shared.media']
+    >;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::child-calculator-content.child-calculator-content'
+    > &
+      Schema.Attribute.Private;
+    node_4: Schema.Attribute.Relation<'oneToOne', 'api::node4.node4'>;
+    publishedAt: Schema.Attribute.DateTime;
+    seo: Schema.Attribute.DynamicZone<
+      ['seo.schema', 'seo.meta-data', 'seo.breadcrumb']
+    >;
+    title: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiLengthCalculatorLengthCalculator
+  extends Struct.SingleTypeSchema {
+  collectionName: 'length_calculators';
+  info: {
+    description: '';
+    displayName: 'LengthCalculators';
+    pluralName: 'length-calculators';
+    singularName: 'length-calculator';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    calculator: Schema.Attribute.Component<
+      'calculator.length-calculator-component',
+      true
+    >;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::length-calculator.length-calculator'
     > &
       Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
-    siteDescription: Schema.Attribute.Text & Schema.Attribute.Required;
-    siteName: Schema.Attribute.String & Schema.Attribute.Required;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -580,10 +551,6 @@ export interface ApiNode2Node2 extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
-    calculators: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::calculator.calculator'
-    >;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -604,6 +571,7 @@ export interface ApiNode2Node2 extends Struct.CollectionTypeSchema {
 export interface ApiNode3Node3 extends Struct.CollectionTypeSchema {
   collectionName: 'node3s';
   info: {
+    description: '';
     displayName: 'Node3';
     pluralName: 'node3s';
     singularName: 'node3';
@@ -612,19 +580,56 @@ export interface ApiNode3Node3 extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
-    calculators: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::calculator.calculator'
+    calculator_content: Schema.Attribute.Relation<
+      'oneToOne',
+      'api::calculator-content.calculator-content'
+    >;
+    conversionParameter: Schema.Attribute.Float;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    from: Schema.Attribute.String;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<'oneToMany', 'api::node3.node3'> &
+      Schema.Attribute.Private;
+    node_2: Schema.Attribute.Relation<'manyToOne', 'api::node2.node2'>;
+    node_4s: Schema.Attribute.Relation<'oneToMany', 'api::node4.node4'>;
+    publishedAt: Schema.Attribute.DateTime;
+    slug: Schema.Attribute.UID<'title'> & Schema.Attribute.Required;
+    title: Schema.Attribute.String & Schema.Attribute.Required;
+    to: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiNode4Node4 extends Struct.CollectionTypeSchema {
+  collectionName: 'node4s';
+  info: {
+    description: '';
+    displayName: 'Node4';
+    pluralName: 'node4s';
+    singularName: 'node4';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    child_calculator_content: Schema.Attribute.Relation<
+      'oneToOne',
+      'api::child-calculator-content.child-calculator-content'
     >;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
-    localizations: Schema.Attribute.Relation<'oneToMany', 'api::node3.node3'> &
+    localizations: Schema.Attribute.Relation<'oneToMany', 'api::node4.node4'> &
       Schema.Attribute.Private;
-    node_2: Schema.Attribute.Relation<'manyToOne', 'api::node2.node2'>;
+    node_3: Schema.Attribute.Relation<'manyToOne', 'api::node3.node3'>;
     publishedAt: Schema.Attribute.DateTime;
-    slug: Schema.Attribute.UID<'title'> & Schema.Attribute.Required;
+    slug: Schema.Attribute.UID<'title'>;
+    specificValue: Schema.Attribute.Float;
     title: Schema.Attribute.String & Schema.Attribute.Required;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -1141,14 +1146,14 @@ declare module '@strapi/strapi' {
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
-      'api::about.about': ApiAboutAbout;
-      'api::ad-script.ad-script': ApiAdScriptAdScript;
-      'api::author.author': ApiAuthorAuthor;
-      'api::calculator.calculator': ApiCalculatorCalculator;
-      'api::global.global': ApiGlobalGlobal;
+      'api::area-calculator.area-calculator': ApiAreaCalculatorAreaCalculator;
+      'api::calculator-content.calculator-content': ApiCalculatorContentCalculatorContent;
+      'api::child-calculator-content.child-calculator-content': ApiChildCalculatorContentChildCalculatorContent;
+      'api::length-calculator.length-calculator': ApiLengthCalculatorLengthCalculator;
       'api::node1.node1': ApiNode1Node1;
       'api::node2.node2': ApiNode2Node2;
       'api::node3.node3': ApiNode3Node3;
+      'api::node4.node4': ApiNode4Node4;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
       'plugin::i18n.locale': PluginI18NLocale;

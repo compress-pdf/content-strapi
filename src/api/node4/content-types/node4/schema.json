@@ -1,0 +1,39 @@
+{
+  "kind": "collectionType",
+  "collectionName": "node4s",
+  "info": {
+    "singularName": "node4",
+    "pluralName": "node4s",
+    "displayName": "Node4",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "title"
+    },
+    "node_3": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::node3.node3",
+      "inversedBy": "node_4s"
+    },
+    "child_calculator_content": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::child-calculator-content.child-calculator-content",
+      "mappedBy": "node_4"
+    },
+    "specificValue": {
+      "type": "float"
+    }
+  }
+}

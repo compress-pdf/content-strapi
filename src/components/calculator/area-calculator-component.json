@@ -1,0 +1,39 @@
+{
+  "collectionName": "components_calculator_area_calculator_components",
+  "info": {
+    "displayName": "AreaCalculatorComponent"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "slug": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "conversionParameter": {
+      "type": "float"
+    },
+    "from": {
+      "type": "enumeration",
+      "enum": [
+        "square feet",
+        "square inch",
+        "square meter"
+      ],
+      "required": true
+    },
+    "to": {
+      "type": "enumeration",
+      "enum": [
+        "square feet",
+        "square inch",
+        "square meter"
+      ]
+    }
+  }
+}

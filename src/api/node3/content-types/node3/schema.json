@@ -4,7 +4,8 @@
   "info": {
     "singularName": "node3",
     "pluralName": "node3s",
-    "displayName": "Node3"
+    "displayName": "Node3",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -26,11 +27,26 @@
       "target": "api::node2.node2",
       "inversedBy": "node_3_s"
     },
-    "calculators": {
+    "node_4s": {
       "type": "relation",
       "relation": "oneToMany",
-      "target": "api::calculator.calculator",
-      "mappedBy": "node_3_"
+      "target": "api::node4.node4",
+      "mappedBy": "node_3"
+    },
+    "conversionParameter": {
+      "type": "float"
+    },
+    "from": {
+      "type": "string"
+    },
+    "to": {
+      "type": "string"
+    },
+    "calculator_content": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::calculator-content.calculator-content",
+      "mappedBy": "node_3"
     }
   }
 }

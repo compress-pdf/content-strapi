@@ -1,0 +1,53 @@
+{
+  "collectionName": "components_calculator_length_calculator_components",
+  "info": {
+    "displayName": "LengthCalculatorComponent",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "unique": true,
+      "required": true
+    },
+    "conversionParameter": {
+      "type": "float"
+    },
+    "slug": {
+      "type": "string",
+      "unique": true,
+      "required": true
+    },
+    "from": {
+      "type": "enumeration",
+      "enum": [
+        "meter",
+        "kilometer",
+        "nanometer",
+        "centimeter",
+        "micrometer",
+        "decimeter",
+        "millimeter",
+        "picometer",
+        "yard"
+      ],
+      "required": true
+    },
+    "to": {
+      "type": "enumeration",
+      "enum": [
+        "meter",
+        "kilometer",
+        "nanometer",
+        "centimeter",
+        "micrometer",
+        "decimeter",
+        "millimeter",
+        "picometer",
+        "yard"
+      ],
+      "required": true
+    }
+  }
+}

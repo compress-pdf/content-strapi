@@ -1,0 +1,21 @@
+{
+  "kind": "singleType",
+  "collectionName": "length_calculators",
+  "info": {
+    "singularName": "length-calculator",
+    "pluralName": "length-calculators",
+    "displayName": "LengthCalculators",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "calculator": {
+      "type": "component",
+      "repeatable": true,
+      "component": "calculator.length-calculator-component"
+    }
+  }
+}
