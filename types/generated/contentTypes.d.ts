@@ -433,7 +433,7 @@ export interface ApiCalculatorContentCalculatorContent
     seo: Schema.Attribute.DynamicZone<
       ['seo.schema', 'seo.meta-data', 'seo.breadcrumb']
     >;
-    title: Schema.Attribute.String;
+    title: Schema.Attribute.String & Schema.Attribute.Unique;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -471,7 +471,7 @@ export interface ApiChildCalculatorContentChildCalculatorContent
     seo: Schema.Attribute.DynamicZone<
       ['seo.schema', 'seo.meta-data', 'seo.breadcrumb']
     >;
-    title: Schema.Attribute.String;
+    title: Schema.Attribute.String & Schema.Attribute.Unique;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -502,6 +502,39 @@ export interface ApiLengthCalculatorLengthCalculator
     localizations: Schema.Attribute.Relation<
       'oneToMany',
       'api::length-calculator.length-calculator'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiLengthCalculatorsChildLengthCalculatorsChild
+  extends Struct.SingleTypeSchema {
+  collectionName: 'length_calculators_children';
+  info: {
+    description: '';
+    displayName: 'LengthCalculatorsChild';
+    pluralName: 'length-calculators-children';
+    singularName: 'length-calculators-child';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    calculator: Schema.Attribute.Component<
+      'calculator.child-length-calculator-components',
+      true
+    >;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::length-calculators-child.length-calculators-child'
     > &
       Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
@@ -1150,6 +1183,7 @@ declare module '@strapi/strapi' {
       'api::calculator-content.calculator-content': ApiCalculatorContentCalculatorContent;
       'api::child-calculator-content.child-calculator-content': ApiChildCalculatorContentChildCalculatorContent;
       'api::length-calculator.length-calculator': ApiLengthCalculatorLengthCalculator;
+      'api::length-calculators-child.length-calculators-child': ApiLengthCalculatorsChildLengthCalculatorsChild;
       'api::node1.node1': ApiNode1Node1;
       'api::node2.node2': ApiNode2Node2;
       'api::node3.node3': ApiNode3Node3;

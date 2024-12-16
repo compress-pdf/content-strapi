@@ -24,6 +24,23 @@ export interface CalculatorAreaCalculatorComponent
   };
 }
 
+export interface CalculatorChildLengthCalculatorComponents
+  extends Struct.ComponentSchema {
+  collectionName: 'components_calculator_child_length_calculator_components';
+  info: {
+    description: '';
+    displayName: 'ChildLengthCalculatorComponents';
+  };
+  attributes: {
+    slug: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.Unique;
+    title: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.Unique;
+  };
+}
+
 export interface CalculatorLengthCalculatorComponent
   extends Struct.ComponentSchema {
   collectionName: 'components_calculator_length_calculator_components';
@@ -176,6 +193,7 @@ declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
       'calculator.area-calculator-component': CalculatorAreaCalculatorComponent;
+      'calculator.child-length-calculator-components': CalculatorChildLengthCalculatorComponents;
       'calculator.length-calculator-component': CalculatorLengthCalculatorComponent;
       'calculator.result': CalculatorResult;
       'seo.breadcrumb': SeoBreadcrumb;

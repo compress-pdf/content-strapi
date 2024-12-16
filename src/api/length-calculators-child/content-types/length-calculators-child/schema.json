@@ -1,0 +1,21 @@
+{
+  "kind": "singleType",
+  "collectionName": "length_calculators_children",
+  "info": {
+    "singularName": "length-calculators-child",
+    "pluralName": "length-calculators-children",
+    "displayName": "LengthCalculatorsChild",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "calculator": {
+      "type": "component",
+      "repeatable": true,
+      "component": "calculator.child-length-calculator-components"
+    }
+  }
+}
