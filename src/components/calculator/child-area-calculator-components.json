@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_calculator_child_area_calculator_components",
+  "info": {
+    "displayName": "ChildAreaCalculatorComponents"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "slug": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    }
+  }
+}

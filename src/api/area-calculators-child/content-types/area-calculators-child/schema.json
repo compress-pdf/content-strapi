@@ -1,0 +1,20 @@
+{
+  "kind": "singleType",
+  "collectionName": "area_calculators_children",
+  "info": {
+    "singularName": "area-calculators-child",
+    "pluralName": "area-calculators-children",
+    "displayName": "AreaCalculatorsChild"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "calculator": {
+      "type": "component",
+      "repeatable": true,
+      "component": "calculator.child-area-calculator-components"
+    }
+  }
+}

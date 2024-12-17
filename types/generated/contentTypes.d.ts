@@ -402,6 +402,38 @@ export interface ApiAreaCalculatorAreaCalculator
   };
 }
 
+export interface ApiAreaCalculatorsChildAreaCalculatorsChild
+  extends Struct.SingleTypeSchema {
+  collectionName: 'area_calculators_children';
+  info: {
+    displayName: 'AreaCalculatorsChild';
+    pluralName: 'area-calculators-children';
+    singularName: 'area-calculators-child';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    calculator: Schema.Attribute.Component<
+      'calculator.child-area-calculator-components',
+      true
+    >;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::area-calculators-child.area-calculators-child'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiCalculatorContentCalculatorContent
   extends Struct.CollectionTypeSchema {
   collectionName: 'calculator_contents';
@@ -1180,6 +1212,7 @@ declare module '@strapi/strapi' {
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
       'api::area-calculator.area-calculator': ApiAreaCalculatorAreaCalculator;
+      'api::area-calculators-child.area-calculators-child': ApiAreaCalculatorsChildAreaCalculatorsChild;
       'api::calculator-content.calculator-content': ApiCalculatorContentCalculatorContent;
       'api::child-calculator-content.child-calculator-content': ApiChildCalculatorContentChildCalculatorContent;
       'api::length-calculator.length-calculator': ApiLengthCalculatorLengthCalculator;
